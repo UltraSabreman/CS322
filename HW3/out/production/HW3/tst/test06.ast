@@ -1,0 +1,7 @@
+# AST Program
+ ClassDecl Test 
+  MethodDecl void main ()
+   VarDecl BoolType flag true
+   While flag
+    Assign flag false
+   Print "done"

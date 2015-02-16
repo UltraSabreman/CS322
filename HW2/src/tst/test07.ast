@@ -1,0 +1,11 @@
+# AST0 Program --- embedded constant folding
+#
+If true
+ Print 1
+
+If false
+ Print 2
+Else
+ Print 3
+
+

@@ -1,0 +1,10 @@
+# IR0 Program
+ if true == false goto L0
+ print (1)
+L0:
+ if false == false goto L1
+ print (2)
+ goto L2
+L1:
+ print (3)
+L2:

@@ -1,0 +1,8 @@
+# AST Program
+ ClassDecl Test 
+  MethodDecl void main ()
+   VarDecl IntType i ()
+   VarDecl IntType j ()
+   Assign i 2
+   Assign j i
+   Print j

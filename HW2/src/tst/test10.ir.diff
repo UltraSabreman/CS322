@@ -1,0 +1,23 @@
+5c5
+<  goto L0
+---
+>  if false == false goto L0
+10c10
+< L2:
+---
+> L1:
+12c12,13
+<  if y == true goto L1
+---
+>  if y == true goto L3
+>  if false == true goto L3
+14,17d14
+< L1:
+<  if t2 == false goto L3
+<  print (2)
+<  goto L2
+18a16,19
+>  if t2 == false goto L2
+>  print (2)
+>  goto L1
+> L2:

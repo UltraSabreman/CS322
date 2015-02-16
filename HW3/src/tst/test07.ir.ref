@@ -1,0 +1,15 @@
+# IR Program
+
+data _class_Test (sz=8): _main
+
+_main ()
+(a)
+{
+ t1 = call _malloc(12)
+ [t1]:P = _class_A
+ a = t1
+ 8[a]:I = 10
+ t2 = 8[a]:I
+ call _printInt(t2)
+ return 
+}

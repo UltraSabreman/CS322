@@ -1,0 +1,8 @@
+# AST0 Program  --- comparison embedding
+#
+Assign n 1
+If (Binop > n 0)
+ Print n
+
+While (Binop == n 0)
+ Print n

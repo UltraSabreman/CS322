@@ -1,0 +1,11 @@
+# IR Program
+
+data _class_Test (sz=8): _main
+
+_main ()
+{
+ call _printInt(123)
+ call _printStr("")
+ call _printBool(true)
+ return 
+}

@@ -1,0 +1,7 @@
+# IR0 Program
+ x = 6
+ y = -3
+ z = 9
+ t1 = x + y
+ t2 = t1 + z
+ print (t2)

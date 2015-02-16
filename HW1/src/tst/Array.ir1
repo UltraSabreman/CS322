@@ -1,0 +1,199 @@
+# Solutions to Lab1 exercises -- IR1 code
+#
+
+_sum (a, n)
+(sum, i)
+{
+  sum = 0
+  i = 0
+L0:
+  if i >= n goto L1
+  t1 = i * 4
+  t2 = a + t1
+  t3 = [t2]
+  sum = sum + t3
+  i = i + 1
+  goto L0
+L1:
+  return sum
+}
+
+_average (a, n)
+(sum, i)
+{
+  sum = 0
+  i = 0
+L0:
+  if i >= n goto L1
+  t1 = i * 4
+  t2 = a + t1
+  t3 = [t2]
+  sum = sum + t3
+  i = i + 1
+  goto L0
+L1:
+  t4 = sum / i
+  return t4
+}
+
+_max (a, n)
+(max, i)
+{
+  max = [a]
+  i = 1
+L0:
+  if i >= n goto L1
+  t1 = i * 4
+  t2 = a + t1
+  t3 = [t2]
+  if t3 <= max goto L2
+  t4 = i * 4
+  t5 = a + t4
+  max = [t5]
+L2:
+  i = i + 1
+  goto L0
+L1:
+  return max
+}
+
+_midx (a, n)
+(max, midx, i)
+{
+  max = [a]
+  midx = 0
+  i = 1
+L0:
+  if i >= n goto L2
+  t1 = i * 4
+  t2 = a + t1
+  t3 = [t2]
+  if t3 <= max goto L1
+  t4 = i * 4
+  t5 = a + t4
+  max = [t5]
+  midx = i
+L1:
+  i = i + 1
+  goto L0
+L2:
+  return midx
+}
+
+_reverse (a, n)
+(i, j, t)
+{
+  i = 0
+  j = n - 1
+L0:
+  if i >= j goto L1
+  t1 = i * 4
+  t2 = a + t1
+  t = [t2]
+  t3 = j * 4
+  t4 = a + t3
+  t5 = [t4]
+  t6 = i * 4
+  t7 = a + t6
+  [t7] = t5
+  t8 = j * 4
+  t9 = a + t8
+  [t9] = t
+  i = i + 1
+  j = j - 1
+  goto L0
+L1:
+  return 
+}
+
+_sort (a, n)
+(i, j, t)
+{
+  i = 0
+L0:
+  if i >= n goto L4
+  j = i + 1
+L1:
+  if j >= n goto L3
+  t1 = i * 4
+  t2 = a + t1
+  t3 = [t2]
+  t4 = j * 4
+  t5 = a + t4
+  t6 = [t5]
+  if t3 <= t6 goto L2
+  t7 = i * 4
+  t8 = a + t7
+  t = [t8]
+  t9 = j * 4
+  t10 = a + t9
+  t11 = [t10]
+  t12 = i * 4
+  t13 = a + t12
+  [t13] = t11
+  t14 = j * 4
+  t15 = a + t14
+  [t15] = t
+L2:
+  j = j + 1
+  goto L1
+L3:
+  i = i + 1
+  goto L0
+L4:
+  return 
+}
+
+_printArray (a, n)
+(i, val)
+{
+  i = 0
+L0:
+  if i >= n goto L1
+  t1 = i * 4
+  t2 = a + t1
+  val = [t2]
+  call _printInt(val)
+  i = i + 1
+  goto L0
+L1:
+  return 
+}
+
+_main ()
+(a, sum, average, max, midx)
+{
+  a = call _malloc(48)
+  [a] = 5
+  4[a] = 3
+  8[a] = 6
+  12[a] = 8
+  16[a] = 2
+  20[a] = 10
+  24[a] = 11
+  28[a] = 9
+  32[a] = 1
+  36[a] = 4
+  40[a] = 7
+  44[a] = 0
+
+  sum = call _sum(a, 12)
+  call _printStr("Array sum:")
+  call _printInt(sum)
+  average = call _average(a, 12)
+  call _printStr("Array average:")
+  call _printInt(average)
+  max = call _max(a, 12)
+  call _printStr("Array max:")
+  call _printInt(max)
+  midx = call _midx(a, 12)
+  call _printStr("Array midx:")
+  call _printInt(midx)
+  call _reverse(a, 12)
+  call _printStr("Reversed array:")
+  call _printArray(a, 12)
+  call _sort(a, 12)
+  call _printStr("Sorted array:")
+  call _printArray(a, 12)
+  return 
+}

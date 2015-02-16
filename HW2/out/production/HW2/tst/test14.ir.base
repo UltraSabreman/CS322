@@ -1,0 +1,18 @@
+# IR0 Program
+ t1 = true
+ if 3 > 0 goto L1
+ t1 = false
+L1:
+ if t1 == false goto L0
+ print (1)
+L0:
+L2:
+ t2 = true
+ if 3 == 0 goto L4
+ t2 = false
+L4:
+ if t2 == false goto L3
+ print (2)
+ goto L2
+L3:
+ print (3)

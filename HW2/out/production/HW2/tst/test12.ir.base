@@ -1,0 +1,14 @@
+# IR0 Program
+ t1 = malloc (16)
+ a = t1
+ t2 = 1 + 1
+ t3 = t2 * 4
+ t4 = a + t3
+ [t4] = 10
+ t5 = -1
+ t6 = -t5
+ t7 = 2 * t6
+ t8 = t7 * 4
+ t9 = a + t8
+ t10 = [t9]
+ print (t10)

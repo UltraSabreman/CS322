@@ -1,0 +1,15 @@
+# IR0 Program
+ t1 = 2 + 4
+ t2 = -t1
+ t3 = -t2
+ x = t3
+ t4 = -5
+ t5 = t4 + 2
+ y = t5
+ t6 = 2 * 3
+ t7 = 4 - 1
+ t8 = t6 + t7
+ z = t8
+ t9 = x + y
+ t10 = t9 + z
+ print (t10)

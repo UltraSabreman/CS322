@@ -1,0 +1,26 @@
+# IR Program
+
+data _class_Test (sz=8): _main
+data _class_B (sz=8): _B_setval
+
+_main ()
+(b)
+{
+ t1 = call _malloc(16)
+ [t1]:P = _class_B
+ b = t1
+ t2 = [b]:P
+ t3 = [t2]:P
+ call * t3(b, 10)
+ t4 = 8[b]:I
+ call _printInt(t4)
+ return 
+}
+
+_B_setval (obj, u)
+{
+ 8[obj]:I = u
+ t1 = 8[obj]:I
+ 12[obj]:I = t1
+ return 
+}

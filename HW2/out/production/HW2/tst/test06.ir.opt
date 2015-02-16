@@ -1,0 +1,5 @@
+# IR0 Program
+ print (true)
+ print (true)
+ print (false)
+ print (true)

@@ -1,0 +1,28 @@
+# IR Program
+
+data _class_Test (sz=8): _main
+data _class_B (sz=8): _B_go
+
+_main ()
+(b)
+{
+ t1 = call _malloc(13)
+ [t1]:P = _class_B
+ b = t1
+ 8[b]:I = 10
+ 12[b]:B = true
+ t2 = 12[b]:B
+ if t2 == false goto L0
+ t3 = [b]:P
+ t4 = [t3]:P
+ call * t4(b)
+L0:
+ return 
+}
+
+_B_go (obj)
+{
+ t1 = 8[obj]:I
+ call _printInt(t1)
+ return 
+}

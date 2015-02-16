@@ -1,0 +1,6 @@
+let add2 = fn x => x + 2
+in 14 + 
+     let b = add2 3
+     in b + 7
+     end
+end

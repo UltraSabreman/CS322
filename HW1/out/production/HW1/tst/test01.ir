@@ -1,0 +1,10 @@
+# IR1 Program
+
+_main ()
+{
+ call _printInt(123)
+ call _printStr("abc")
+ call _printStr()
+ call _printInt(true)
+ return 
+}

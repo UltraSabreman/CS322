@@ -1,0 +1,6 @@
+# Stack Code (SC0)
+
+0. CONST 123
+1. PRINT
+2. CONST 1
+3. PRINT

@@ -1,0 +1,17 @@
+# AST0 Program --- embedded constant folding
+#
+If (Binop || true false) 
+ Print 1
+
+If (Binop && true false) 
+ Print 2
+Else
+ Print 3
+
+If (Unop ! true) 
+ Print 4
+
+If (Binop < 1 (Binop + 2 2))
+ Print 5
+Else
+ Print 6

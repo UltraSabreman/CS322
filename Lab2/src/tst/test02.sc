@@ -1,0 +1,10 @@
+# Stack Code (SC0)
+
+0. CONST 100
+1. STORE 0
+2. LOAD 0
+3. PRINT
+4. CONST 1
+5. CONST 2
+6. ADD
+7. PRINT

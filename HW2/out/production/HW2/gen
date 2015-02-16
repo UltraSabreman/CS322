@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Script for running miniJava compiler tests. 
+# (For CS321 Language and Compiler Design, Portland State University.)
+#
+# Usage:
+#   ./gen tst/test01.ast  -- test a single program 
+#   ./gen tst/test*.ast   -- test all programs
+#
+# The script will compare your IR0GenOpt's output with a ref file (if exists),
+# and save the diffs in a .diff file.
+#
+
+for i
+do
+	d=`dirname $i`
+	f=`basename $i .ast`
+        echo -n "$d/$f: "
+	java IR0GenOpt $d/$f.ast 1> $d/$f.ir
+	if [ -r $d/$f.ir ]; then
+          diff -w $d/$f.ir $d/$f.ir.opt > $d/$f.ir.diff; 
+          if [ -s $d/$f.ir.diff ]; then 
+            echo "differs from ref (see $f.ir.diff)"; 
+          else 
+            echo "matches ref"; 
+            rm $d/$f.ir.diff;
+          fi
+	else
+            echo "no ref to compare"; 
+        fi
+done
+exit 0
+

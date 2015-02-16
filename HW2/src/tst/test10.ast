@@ -1,0 +1,8 @@
+# AST0 Program --- challenging cases
+#
+Assign x true
+Print (Binop && x false) 
+
+Assign y false
+While (Binop || y false)
+ Print 2

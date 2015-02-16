@@ -1,0 +1,7 @@
+# AST Program
+ ClassDecl Test 
+  MethodDecl void main ()
+   If true
+    Print 1
+   Else
+    Print 2

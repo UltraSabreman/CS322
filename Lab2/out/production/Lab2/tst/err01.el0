@@ -1,0 +1,6 @@
+let x = 2
+in 14 + x +
+     let b = 3
+     in y + 7
+     end
+end

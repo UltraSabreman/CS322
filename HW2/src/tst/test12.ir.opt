@@ -1,0 +1,6 @@
+# IR0 Program
+ t1 = malloc (16)
+ a = t1
+ 8[a] = 10
+ t2 = 8[a]
+ print (t2)

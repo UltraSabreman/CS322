@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="IR0Interp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/IR0Interp.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

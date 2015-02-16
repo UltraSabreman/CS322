@@ -1,0 +1,11 @@
+# AST0 Program  --- comparison embedding
+#
+Assign a 3
+Assign b 3
+If (Binop > (Binop + a 1) (Binop - b 1))
+ Print 1
+
+While (Binop > (Binop + a 1) (Binop + b 1))
+ Print 2
+
+Print 3

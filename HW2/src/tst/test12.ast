@@ -1,0 +1,5 @@
+# AST0 Program  --- address optimization
+#
+Assign a (NewArray 4) 
+Assign (ArrayElm a (Binop + 1 1)) 10
+Print (ArrayElm a (Binop * 2 (Unop - (Unop - 1))))

@@ -1,0 +1,5 @@
+# IR0 Program
+ print (6)
+ print (8)
+ x = 6
+ print (x)

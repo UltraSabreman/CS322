@@ -1,0 +1,43 @@
+# IR Program
+
+data _class_Test (sz=8): _main
+data _class_A (sz=16): _A_f, _A_g
+data _class_B (sz=16): _B_f, _A_g
+
+_main ()
+(b, a)
+{
+ t1 = call _malloc(16)
+ [t1]:P = _class_B
+ b = t1
+ a = b
+ 8[b]:I = 11
+ 12[b]:I = 22
+ t2 = [a]:P
+ t3 = [t2]:P
+ t4 = call * t3(a)
+ call _printInt(t4)
+ t5 = [a]:P
+ t6 = 8[t5]:P
+ t7 = call * t6(a)
+ call _printInt(t7)
+ return 
+}
+
+_A_f (obj)
+{
+ t1 = 8[obj]:I
+ return t1
+}
+
+_A_g (obj)
+{
+ t1 = 8[obj]:I
+ return t1
+}
+
+_B_f (obj)
+{
+ t1 = 12[obj]:I
+ return t1
+}

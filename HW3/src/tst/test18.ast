@@ -1,0 +1,13 @@
+# AST Program
+ ClassDecl Test 
+  MethodDecl void main ()
+   VarDecl (ObjType B) b (NewObj B)
+   CallStmt b setval (10 )
+   Print (Field b i) 
+ ClassDecl A 
+  VarDecl IntType i ()
+ ClassDecl B A
+  VarDecl IntType j ()
+  MethodDecl void setval ((Param IntType u) )
+   Assign i u
+   Assign j i

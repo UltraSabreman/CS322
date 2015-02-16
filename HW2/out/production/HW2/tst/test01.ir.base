@@ -1,0 +1,8 @@
+# IR0 Program
+ t1 = 2 + 4
+ print (t1)
+ t2 = 2 * 4
+ print (t2)
+ t3 = 2 + 4
+ x = t3
+ print (x)

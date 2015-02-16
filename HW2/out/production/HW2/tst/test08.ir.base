@@ -1,0 +1,35 @@
+# IR0 Program
+ t1 = true
+ if true == true goto L1
+ if false == true goto L1
+ t1 = false
+L1:
+ if t1 == false goto L0
+ print (1)
+L0:
+ t2 = false
+ if true == false goto L3
+ if false == false goto L3
+ t2 = true
+L3:
+ if t2 == false goto L2
+ print (2)
+ goto L4
+L2:
+ print (3)
+L4:
+ t3 = !true
+ if t3 == false goto L5
+ print (4)
+L5:
+ t4 = 2 + 2
+ t5 = true
+ if 1 < t4 goto L7
+ t5 = false
+L7:
+ if t5 == false goto L6
+ print (5)
+ goto L8
+L6:
+ print (6)
+L8:

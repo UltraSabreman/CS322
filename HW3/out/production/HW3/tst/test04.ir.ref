@@ -1,0 +1,12 @@
+# IR Program
+
+data _class_Test (sz=8): _main
+
+_main ()
+(i, j)
+{
+ i = 2
+ j = i
+ call _printInt(j)
+ return 
+}

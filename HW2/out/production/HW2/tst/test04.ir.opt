@@ -1,0 +1,7 @@
+# IR0 Program
+ x = true
+ y = x
+ z = false
+ print (x)
+ print (y)
+ print (z)

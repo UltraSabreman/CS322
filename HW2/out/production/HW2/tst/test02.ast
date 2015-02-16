@@ -1,0 +1,9 @@
+# AST0 Program --- constant folding
+#
+Assign x (Unop - (Unop - (Binop + 2 4)))
+
+Assign y (Binop + (Unop - 5) 2)
+
+Assign z (Binop + (Binop * 2 3) (Binop - 4 1))
+
+Print (Binop + (Binop + x y) z)

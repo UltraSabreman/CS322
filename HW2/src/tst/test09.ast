@@ -1,0 +1,14 @@
+# AST0 Program --- embedded constant folding
+#
+While false
+ Print 1
+
+While (Unop ! true) 
+ Print 1
+
+While (Binop && true false) 
+ Print 3
+
+# The above statements could all be optimized away
+
+Print 4

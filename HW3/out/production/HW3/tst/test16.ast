@@ -1,0 +1,11 @@
+# AST Program
+ ClassDecl Test 
+  MethodDecl void main ()
+   VarDecl (ObjType B) b (NewObj B)
+   Print (Call b go ())
+ ClassDecl A 
+  MethodDecl IntType echo ((Param IntType a) )
+   Return a
+ ClassDecl B A
+  MethodDecl IntType go ()
+   Return (Call This echo (2 ))

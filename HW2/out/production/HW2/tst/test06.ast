@@ -1,0 +1,9 @@
+# AST0 Program --- constant folding
+#
+Print (Binop && (Binop < 1 2) true)
+
+Print (Binop || (Binop < 1 2) (Binop == (Binop + 1 2) 3))
+
+Print (Binop && (Binop < 1 2) (Binop > (Unop - 2) 3))
+
+Print (Unop ! (Unop ! (Binop < 1 2)))

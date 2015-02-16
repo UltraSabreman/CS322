@@ -1,0 +1,11 @@
+# AST0 Program --- constant folding
+#
+Assign x (Binop || (Binop && false false) (Binop || false true))
+
+Assign y (Binop || false x)
+
+Assign z (Binop && (Binop && true false) y)
+
+Print x
+Print y
+Print z

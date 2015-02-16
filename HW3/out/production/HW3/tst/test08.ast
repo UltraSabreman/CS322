@@ -1,0 +1,8 @@
+# AST Program
+ ClassDecl Test 
+  MethodDecl void main ()
+   VarDecl (ObjType Body) b (NewObj Body)
+   CallStmt b go ()
+ ClassDecl Body 
+  MethodDecl void go ()
+   Print "Go!"
