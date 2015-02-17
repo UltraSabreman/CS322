@@ -24,139 +24,166 @@
     <favorites_list name="HW3" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="IR0GenOpt.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../HW2/src/IR0GenOpt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4828" max-vertical-offset="10863">
-              <caret line="119" column="43" selection-start-line="119" selection-start-column="43" selection-end-line="119" selection-end-column="43" />
-              <folding>
-                <element signature="method#Crawler#0;class#IR0GenOpt#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IRGen.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/IRGen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42424244" vertical-offset="4777" max-vertical-offset="6987">
-              <caret line="749" column="26" selection-start-line="749" selection-start-column="26" selection-end-line="749" selection-end-column="26" />
-              <folding>
-                <element signature="class#GenException#0;class#IRGen#0" expanded="false" />
-                <element signature="e#626#706#0" expanded="false" />
-                <element signature="class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#ClassInfo#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#ClassInfo#1;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#methodBaseClass#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#methodType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#fieldType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#fieldOffset#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="method#toString#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="e#4302#4382#0" expanded="false" />
-                <element signature="n#!!doc;n#CodePack#0;n#IRGen#0" expanded="false" />
-                <element signature="class#CodePack#0;class#IRGen#0" expanded="false" />
-                <element signature="e#4998#5009#0" expanded="false" />
-                <element signature="class#AddrPack#0;class#IRGen#0" expanded="false" />
-                <element signature="e#5372#5378#0" expanded="false" />
-                <element signature="class#Env#0;class#IRGen#0" expanded="false" />
-                <element signature="e#5563#5643#0" expanded="false" />
-                <element signature="e#5801#5820#0" expanded="true" />
-                <element signature="e#5937#6017#0" expanded="false" />
-                <element signature="method#topoSort#0;class#IRGen#0" expanded="false" />
-                <element signature="e#6254#6269#0" expanded="true" />
-                <element signature="e#6313#6321#0" expanded="true" />
-                <element signature="e#6730#6767#0" expanded="false" />
-                <element signature="method#getClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="e#7702#7728#0" expanded="false" />
-                <element signature="method#createClassInfo#0;class#IRGen#0" expanded="false" />
-                <element signature="e#9958#10038#0" expanded="false" />
-                <element signature="method#gen#0;class#IRGen#0" expanded="false" />
-                <element signature="e#10760#10769#0" expanded="true" />
-                <element signature="e#10819#10828#0" expanded="true" />
-                <element signature="e#11181#11197#0" expanded="false" />
-                <element signature="method#genData#0;class#IRGen#0" expanded="false" />
-                <element signature="e#11759#11770#0" expanded="true" />
-                <element signature="e#12021#12040#0" expanded="false" />
-                <element signature="method#gen#1;class#IRGen#0" expanded="false" />
-                <element signature="e#12273#12282#0" expanded="true" />
-                <element signature="e#12403#12420#0" expanded="false" />
-                <element signature="method#gen#2;class#IRGen#0" expanded="false" />
-                <element signature="e#13083#13092#0" expanded="true" />
-                <element signature="e#13144#13152#0" expanded="true" />
-                <element signature="e#13204#13212#0" expanded="true" />
-                <element signature="e#13892#13906#0" expanded="false" />
-                <element signature="method#gen#3;class#IRGen#0" expanded="false" />
-                <element signature="e#14299#14308#0" expanded="true" />
-                <element signature="e#14523#14536#0" expanded="false" />
-                <element signature="method#gen#4;class#IRGen#0" expanded="false" />
-                <element signature="e#15281#15293#0" expanded="false" />
-                <element signature="method#gen#5;class#IRGen#0" expanded="false" />
-                <element signature="e#15449#15458#0" expanded="true" />
-                <element signature="e#15589#15602#0" expanded="false" />
-                <element signature="method#gen#6;class#IRGen#0" expanded="false" />
-                <element signature="e#16032#16041#0" expanded="true" />
-                <element signature="e#16689#16704#0" expanded="false" />
-                <element signature="method#gen#7;class#IRGen#0" expanded="false" />
-                <element signature="e#17075#17088#0" expanded="false" />
-                <element signature="method#handleCall#0;class#IRGen#0" expanded="false" />
-                <element signature="e#18485#18494#0" expanded="false" />
-                <element signature="e#18691#18700#0" expanded="true" />
-                <element signature="e#20579#20588#0" expanded="true" />
-                <element signature="e#21550#21559#0" expanded="true" />
-                <element signature="e#22726#22735#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test07.ast" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tst/test07.ast">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test07.ir.ref" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tst/test07.ir.ref">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IR.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ir/IR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5172415" vertical-offset="4090" max-vertical-offset="7582">
-              <caret line="273" column="11" selection-start-line="273" selection-start-column="11" selection-end-line="273" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#12873#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ast.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/Ast.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-130.51724" vertical-offset="2301" max-vertical-offset="6596">
-              <caret line="388" column="38" selection-start-line="388" selection-start-column="38" selection-end-line="388" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#10728#0" expanded="true" />
-                <element signature="e#7536#7537#0" expanded="true" />
-                <element signature="e#7600#7601#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.49573562">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="IRGen.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/IRGen.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.082125604" vertical-offset="0" max-vertical-offset="5270">
+                  <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
+                  <folding>
+                    <element signature="class#GenException#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#698#778#0" expanded="false" />
+                    <element signature="method#ClassInfo#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="method#ClassInfo#1;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="method#methodBaseClass#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="method#methodType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="method#fieldType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="method#toString#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#4374#4454#0" expanded="false" />
+                    <element signature="n#!!doc;n#CodePack#0;n#IRGen#0" expanded="false" />
+                    <element signature="class#CodePack#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#5070#5081#0" expanded="false" />
+                    <element signature="class#AddrPack#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#5444#5450#0" expanded="false" />
+                    <element signature="class#Env#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#5635#5715#0" expanded="false" />
+                    <element signature="e#6009#6089#0" expanded="false" />
+                    <element signature="method#topoSort#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#6802#6839#0" expanded="false" />
+                    <element signature="method#getClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#7774#7800#0" expanded="false" />
+                    <element signature="method#createClassInfo#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#9432#9512#0" expanded="false" />
+                    <element signature="method#gen#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#10234#10243#0" expanded="true" />
+                    <element signature="e#10293#10302#0" expanded="true" />
+                    <element signature="e#10655#10671#0" expanded="false" />
+                    <element signature="method#genData#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#11233#11244#0" expanded="true" />
+                    <element signature="e#11538#11557#0" expanded="false" />
+                    <element signature="method#gen#1;class#IRGen#0" expanded="false" />
+                    <element signature="e#11790#11799#0" expanded="true" />
+                    <element signature="e#11920#11937#0" expanded="false" />
+                    <element signature="method#gen#2;class#IRGen#0" expanded="false" />
+                    <element signature="e#12600#12609#0" expanded="true" />
+                    <element signature="e#12661#12669#0" expanded="true" />
+                    <element signature="e#12721#12729#0" expanded="true" />
+                    <element signature="e#13561#13575#0" expanded="false" />
+                    <element signature="method#gen#3;class#IRGen#0" expanded="false" />
+                    <element signature="e#13968#13977#0" expanded="true" />
+                    <element signature="e#14223#14236#0" expanded="false" />
+                    <element signature="method#gen#4;class#IRGen#0" expanded="false" />
+                    <element signature="e#14981#14993#0" expanded="false" />
+                    <element signature="method#gen#5;class#IRGen#0" expanded="false" />
+                    <element signature="e#15149#15158#0" expanded="true" />
+                    <element signature="e#15289#15302#0" expanded="false" />
+                    <element signature="method#gen#6;class#IRGen#0" expanded="false" />
+                    <element signature="e#15732#15741#0" expanded="true" />
+                    <element signature="e#16373#16388#0" expanded="false" />
+                    <element signature="method#gen#7;class#IRGen#0" expanded="false" />
+                    <element signature="e#16759#16772#0" expanded="false" />
+                    <element signature="method#handleCall#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#17724#17733#0" expanded="true" />
+                    <element signature="e#17975#17983#0" expanded="true" />
+                    <element signature="e#19299#19308#0" expanded="false" />
+                    <element signature="method#gen#8;class#IRGen#0" expanded="false" />
+                    <element signature="e#19505#19514#0" expanded="true" />
+                    <element signature="e#21211#21223#0" expanded="false" />
+                    <element signature="method#gen#9;class#IRGen#0" expanded="false" />
+                    <element signature="e#21906#21918#0" expanded="false" />
+                    <element signature="e#23234#23247#0" expanded="false" />
+                    <element signature="method#gen#11;class#IRGen#0" expanded="false" />
+                    <element signature="e#23779#23793#0" expanded="false" />
+                    <element signature="method#gen#12;class#IRGen#0" expanded="false" />
+                    <element signature="e#24529#24596#0" expanded="false" />
+                    <element signature="method#genAddr#0;class#IRGen#0" expanded="false" />
+                    <element signature="e#24930#24941#0" expanded="false" />
+                    <element signature="method#gen#13;class#IRGen#0" expanded="false" />
+                    <element signature="e#25247#25260#0" expanded="false" />
+                    <element signature="method#gen#14;class#IRGen#0" expanded="false" />
+                    <element signature="e#25892#25900#0" expanded="true" />
+                    <element signature="e#26099#26108#0" expanded="true" />
+                    <element signature="e#26366#26378#0" expanded="false" />
+                    <element signature="e#26726#26735#0" expanded="true" />
+                    <element signature="e#27456#27465#0" expanded="true" />
+                    <element signature="e#28300#28309#0" expanded="false" />
+                    <element signature="method#gen#16;class#IRGen#0" expanded="false" />
+                    <element signature="method#gen#17;class#IRGen#0" expanded="false" />
+                    <element signature="e#29505#29518#0" expanded="false" />
+                    <element signature="method#gen#18;class#IRGen#0" expanded="false" />
+                    <element signature="e#29664#29678#0" expanded="false" />
+                    <element signature="method#gen#19;class#IRGen#0" expanded="false" />
+                    <element signature="e#29836#29849#0" expanded="false" />
+                    <element signature="method#gen#20;class#IRGen#0" expanded="false" />
+                    <element signature="method#gen#21;class#IRGen#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test08.ir.ref" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/tst/test08.ir.ref">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+                  <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test20.ir.ref" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/tst/test20.ir.ref">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="833">
+                  <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test20.ast" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/tst/test20.ast">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+                  <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="Ast.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ast/Ast.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-32.517242" vertical-offset="4803" max-vertical-offset="6562">
+                  <caret line="370" column="40" selection-start-line="370" selection-start-column="29" selection-end-line="370" selection-end-column="40" />
+                  <folding>
+                    <element signature="e#0#10728#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IR.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ir/IR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.33333334" vertical-offset="3314" max-vertical-offset="7582">
+                  <caret line="229" column="11" selection-start-line="229" selection-start-column="11" selection-end-line="229" selection-end-column="11" />
+                  <folding>
+                    <element signature="e#0#12873#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/IRGen.java" root0="FORCE_HIGHLIGHTING" />
@@ -229,8 +256,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -301,6 +326,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -315,6 +342,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -538,33 +566,59 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22494432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13539445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13539445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -584,7 +638,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="46" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/IRGen.java</url>
+          <line>804</line>
+          <properties />
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/IRGen.java</url>
+          <line>108</line>
+          <properties />
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="88" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -593,127 +661,129 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../HW2/src/IR0Gen.java">
+    <entry file="file://$PROJECT_DIR$/../HW2/src/IR0GenOpt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.331781" vertical-offset="6298" max-vertical-offset="7157">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4828" max-vertical-offset="10863">
+          <caret line="119" column="43" selection-start-line="119" selection-start-column="43" selection-end-line="119" selection-end-column="43" />
           <folding>
-            <element signature="e#0#11607#0" expanded="false" />
+            <element signature="method#Crawler#0;class#IR0GenOpt#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test20.ir.ref">
+    <entry file="file://$PROJECT_DIR$/src/IRGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6987">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test17.ir.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test01.ir.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test01.ast">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test02.ast">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test02.ir.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test03.out.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test03.ast">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test03.ir.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_25/jre/lib/rt.jar!/java/util/ArrayList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34790528" vertical-offset="8887" max-vertical-offset="16592">
-          <caret line="576" column="0" selection-start-line="576" selection-start-column="0" selection-end-line="576" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test04.ir.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test04.ast">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/Ast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-130.51724" vertical-offset="2301" max-vertical-offset="6596">
-          <caret line="388" column="38" selection-start-line="388" selection-start-column="38" selection-end-line="388" selection-end-column="38" />
           <folding>
-            <element signature="e#0#10728#0" expanded="true" />
-            <element signature="e#7536#7537#0" expanded="true" />
-            <element signature="e#7600#7601#0" expanded="true" />
+            <element signature="class#GenException#0;class#IRGen#0" expanded="false" />
+            <element signature="e#698#778#0" expanded="false" />
+            <element signature="method#ClassInfo#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="method#ClassInfo#1;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="method#methodBaseClass#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="method#methodType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="method#fieldType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="method#toString#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="e#4374#4454#0" expanded="false" />
+            <element signature="n#!!doc;n#CodePack#0;n#IRGen#0" expanded="false" />
+            <element signature="class#CodePack#0;class#IRGen#0" expanded="false" />
+            <element signature="e#5070#5081#0" expanded="false" />
+            <element signature="class#AddrPack#0;class#IRGen#0" expanded="false" />
+            <element signature="e#5444#5450#0" expanded="false" />
+            <element signature="class#Env#0;class#IRGen#0" expanded="false" />
+            <element signature="e#5635#5715#0" expanded="false" />
+            <element signature="e#6009#6089#0" expanded="false" />
+            <element signature="method#topoSort#0;class#IRGen#0" expanded="false" />
+            <element signature="e#6802#6839#0" expanded="false" />
+            <element signature="method#getClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="e#7774#7800#0" expanded="false" />
+            <element signature="method#createClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="e#9432#9512#0" expanded="false" />
+            <element signature="method#gen#0;class#IRGen#0" expanded="false" />
+            <element signature="e#10234#10243#0" expanded="true" />
+            <element signature="e#10293#10302#0" expanded="true" />
+            <element signature="e#10655#10671#0" expanded="false" />
+            <element signature="method#genData#0;class#IRGen#0" expanded="false" />
+            <element signature="e#11233#11244#0" expanded="true" />
+            <element signature="e#11538#11557#0" expanded="false" />
+            <element signature="method#gen#1;class#IRGen#0" expanded="false" />
+            <element signature="e#11790#11799#0" expanded="true" />
+            <element signature="e#11920#11937#0" expanded="false" />
+            <element signature="method#gen#2;class#IRGen#0" expanded="false" />
+            <element signature="e#12600#12609#0" expanded="true" />
+            <element signature="e#12661#12669#0" expanded="true" />
+            <element signature="e#12721#12729#0" expanded="true" />
+            <element signature="e#13561#13575#0" expanded="false" />
+            <element signature="method#gen#3;class#IRGen#0" expanded="false" />
+            <element signature="e#13968#13977#0" expanded="true" />
+            <element signature="e#14223#14236#0" expanded="false" />
+            <element signature="method#gen#4;class#IRGen#0" expanded="false" />
+            <element signature="e#14981#14993#0" expanded="false" />
+            <element signature="method#gen#5;class#IRGen#0" expanded="false" />
+            <element signature="e#15149#15158#0" expanded="true" />
+            <element signature="e#15289#15302#0" expanded="false" />
+            <element signature="method#gen#6;class#IRGen#0" expanded="false" />
+            <element signature="e#15732#15741#0" expanded="true" />
+            <element signature="e#16373#16388#0" expanded="false" />
+            <element signature="method#gen#7;class#IRGen#0" expanded="false" />
+            <element signature="e#16759#16772#0" expanded="false" />
+            <element signature="method#handleCall#0;class#IRGen#0" expanded="false" />
+            <element signature="e#17724#17733#0" expanded="true" />
+            <element signature="e#17975#17983#0" expanded="true" />
+            <element signature="e#19299#19308#0" expanded="false" />
+            <element signature="method#gen#8;class#IRGen#0" expanded="false" />
+            <element signature="e#19505#19514#0" expanded="true" />
+            <element signature="e#21211#21223#0" expanded="false" />
+            <element signature="method#gen#9;class#IRGen#0" expanded="false" />
+            <element signature="e#21906#21918#0" expanded="false" />
+            <element signature="e#23234#23247#0" expanded="false" />
+            <element signature="method#gen#11;class#IRGen#0" expanded="false" />
+            <element signature="e#23779#23793#0" expanded="false" />
+            <element signature="method#gen#12;class#IRGen#0" expanded="false" />
+            <element signature="e#24529#24596#0" expanded="false" />
+            <element signature="method#genAddr#0;class#IRGen#0" expanded="false" />
+            <element signature="e#24930#24941#0" expanded="false" />
+            <element signature="method#gen#13;class#IRGen#0" expanded="false" />
+            <element signature="e#25247#25260#0" expanded="false" />
+            <element signature="method#gen#14;class#IRGen#0" expanded="false" />
+            <element signature="e#25892#25900#0" expanded="true" />
+            <element signature="e#26099#26108#0" expanded="true" />
+            <element signature="e#26366#26378#0" expanded="false" />
+            <element signature="e#26726#26735#0" expanded="true" />
+            <element signature="e#27456#27465#0" expanded="true" />
+            <element signature="e#28300#28309#0" expanded="false" />
+            <element signature="method#gen#16;class#IRGen#0" expanded="false" />
+            <element signature="method#gen#17;class#IRGen#0" expanded="false" />
+            <element signature="e#29505#29518#0" expanded="false" />
+            <element signature="method#gen#18;class#IRGen#0" expanded="false" />
+            <element signature="e#29664#29678#0" expanded="false" />
+            <element signature="method#gen#19;class#IRGen#0" expanded="false" />
+            <element signature="e#29836#29849#0" expanded="false" />
+            <element signature="method#gen#20;class#IRGen#0" expanded="false" />
+            <element signature="method#gen#21;class#IRGen#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test07.ast">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test07.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ir/IR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5172415" vertical-offset="4090" max-vertical-offset="7582">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4090" max-vertical-offset="7582">
           <caret line="273" column="11" selection-start-line="273" selection-start-column="11" selection-end-line="273" selection-end-column="11" />
           <folding>
             <element signature="e#0#12873#0" expanded="true" />
@@ -721,19 +791,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Ast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2301" max-vertical-offset="6596">
+          <caret line="388" column="38" selection-start-line="388" selection-start-column="38" selection-end-line="388" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#10728#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HW2/src/IR0Gen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.331781" vertical-offset="6298" max-vertical-offset="7157">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test17.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test01.ast">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test02.ast">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test03.out.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test03.ast">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_25/jre/lib/rt.jar!/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34790528" vertical-offset="8887" max-vertical-offset="16592">
+          <caret line="576" column="0" selection-start-line="576" selection-start-column="0" selection-end-line="576" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test04.ast">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/tst/test05.ast">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test05.ir.ref">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41463414" vertical-offset="0" max-vertical-offset="574">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -751,11 +878,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test01.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test06.ir.ref">
+    <entry file="file://$PROJECT_DIR$/src/tst/test02.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test03.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test04.ir.ref">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -763,89 +913,204 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tst/test07.ir.ref">
+    <entry file="file://$PROJECT_DIR$/src/tst/test05.ir.ref">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.41463414" vertical-offset="0" max-vertical-offset="574">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test06.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4738676" vertical-offset="0" max-vertical-offset="574">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tst/test07.ast">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test07.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="0" column="3" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test13.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test11.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test10.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test09.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Ast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.517242" vertical-offset="4803" max-vertical-offset="6562">
+          <caret line="370" column="40" selection-start-line="370" selection-start-column="29" selection-end-line="370" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#10728#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ir/IR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="3314" max-vertical-offset="7582">
+          <caret line="229" column="11" selection-start-line="229" selection-start-column="11" selection-end-line="229" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#12873#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test20.ast">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test20.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tst/test08.ir.ref">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IRGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42424244" vertical-offset="4777" max-vertical-offset="6987">
-          <caret line="749" column="26" selection-start-line="749" selection-start-column="26" selection-end-line="749" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.082125604" vertical-offset="0" max-vertical-offset="5270">
+          <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
           <folding>
             <element signature="class#GenException#0;class#IRGen#0" expanded="false" />
-            <element signature="e#626#706#0" expanded="false" />
-            <element signature="class#ClassInfo#0;class#IRGen#0" expanded="false" />
+            <element signature="e#698#778#0" expanded="false" />
             <element signature="method#ClassInfo#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
             <element signature="method#ClassInfo#1;class#ClassInfo#0;class#IRGen#0" expanded="false" />
             <element signature="method#methodBaseClass#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
             <element signature="method#methodType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
             <element signature="method#fieldType#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-            <element signature="method#fieldOffset#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
             <element signature="method#toString#0;class#ClassInfo#0;class#IRGen#0" expanded="false" />
-            <element signature="e#4302#4382#0" expanded="false" />
+            <element signature="e#4374#4454#0" expanded="false" />
             <element signature="n#!!doc;n#CodePack#0;n#IRGen#0" expanded="false" />
             <element signature="class#CodePack#0;class#IRGen#0" expanded="false" />
-            <element signature="e#4998#5009#0" expanded="false" />
+            <element signature="e#5070#5081#0" expanded="false" />
             <element signature="class#AddrPack#0;class#IRGen#0" expanded="false" />
-            <element signature="e#5372#5378#0" expanded="false" />
+            <element signature="e#5444#5450#0" expanded="false" />
             <element signature="class#Env#0;class#IRGen#0" expanded="false" />
-            <element signature="e#5563#5643#0" expanded="false" />
-            <element signature="e#5801#5820#0" expanded="true" />
-            <element signature="e#5937#6017#0" expanded="false" />
+            <element signature="e#5635#5715#0" expanded="false" />
+            <element signature="e#6009#6089#0" expanded="false" />
             <element signature="method#topoSort#0;class#IRGen#0" expanded="false" />
-            <element signature="e#6254#6269#0" expanded="true" />
-            <element signature="e#6313#6321#0" expanded="true" />
-            <element signature="e#6730#6767#0" expanded="false" />
+            <element signature="e#6802#6839#0" expanded="false" />
             <element signature="method#getClassInfo#0;class#IRGen#0" expanded="false" />
-            <element signature="e#7702#7728#0" expanded="false" />
+            <element signature="e#7774#7800#0" expanded="false" />
             <element signature="method#createClassInfo#0;class#IRGen#0" expanded="false" />
-            <element signature="e#9958#10038#0" expanded="false" />
+            <element signature="e#9432#9512#0" expanded="false" />
             <element signature="method#gen#0;class#IRGen#0" expanded="false" />
-            <element signature="e#10760#10769#0" expanded="true" />
-            <element signature="e#10819#10828#0" expanded="true" />
-            <element signature="e#11181#11197#0" expanded="false" />
+            <element signature="e#10234#10243#0" expanded="true" />
+            <element signature="e#10293#10302#0" expanded="true" />
+            <element signature="e#10655#10671#0" expanded="false" />
             <element signature="method#genData#0;class#IRGen#0" expanded="false" />
-            <element signature="e#11759#11770#0" expanded="true" />
-            <element signature="e#12021#12040#0" expanded="false" />
+            <element signature="e#11233#11244#0" expanded="true" />
+            <element signature="e#11538#11557#0" expanded="false" />
             <element signature="method#gen#1;class#IRGen#0" expanded="false" />
-            <element signature="e#12273#12282#0" expanded="true" />
-            <element signature="e#12403#12420#0" expanded="false" />
+            <element signature="e#11790#11799#0" expanded="true" />
+            <element signature="e#11920#11937#0" expanded="false" />
             <element signature="method#gen#2;class#IRGen#0" expanded="false" />
-            <element signature="e#13083#13092#0" expanded="true" />
-            <element signature="e#13144#13152#0" expanded="true" />
-            <element signature="e#13204#13212#0" expanded="true" />
-            <element signature="e#13892#13906#0" expanded="false" />
+            <element signature="e#12600#12609#0" expanded="true" />
+            <element signature="e#12661#12669#0" expanded="true" />
+            <element signature="e#12721#12729#0" expanded="true" />
+            <element signature="e#13561#13575#0" expanded="false" />
             <element signature="method#gen#3;class#IRGen#0" expanded="false" />
-            <element signature="e#14299#14308#0" expanded="true" />
-            <element signature="e#14523#14536#0" expanded="false" />
+            <element signature="e#13968#13977#0" expanded="true" />
+            <element signature="e#14223#14236#0" expanded="false" />
             <element signature="method#gen#4;class#IRGen#0" expanded="false" />
-            <element signature="e#15281#15293#0" expanded="false" />
+            <element signature="e#14981#14993#0" expanded="false" />
             <element signature="method#gen#5;class#IRGen#0" expanded="false" />
-            <element signature="e#15449#15458#0" expanded="true" />
-            <element signature="e#15589#15602#0" expanded="false" />
+            <element signature="e#15149#15158#0" expanded="true" />
+            <element signature="e#15289#15302#0" expanded="false" />
             <element signature="method#gen#6;class#IRGen#0" expanded="false" />
-            <element signature="e#16032#16041#0" expanded="true" />
-            <element signature="e#16689#16704#0" expanded="false" />
+            <element signature="e#15732#15741#0" expanded="true" />
+            <element signature="e#16373#16388#0" expanded="false" />
             <element signature="method#gen#7;class#IRGen#0" expanded="false" />
-            <element signature="e#17075#17088#0" expanded="false" />
+            <element signature="e#16759#16772#0" expanded="false" />
             <element signature="method#handleCall#0;class#IRGen#0" expanded="false" />
-            <element signature="e#18485#18494#0" expanded="false" />
-            <element signature="e#18691#18700#0" expanded="true" />
-            <element signature="e#20579#20588#0" expanded="true" />
-            <element signature="e#21550#21559#0" expanded="true" />
-            <element signature="e#22726#22735#0" expanded="true" />
+            <element signature="e#17724#17733#0" expanded="true" />
+            <element signature="e#17975#17983#0" expanded="true" />
+            <element signature="e#19299#19308#0" expanded="false" />
+            <element signature="method#gen#8;class#IRGen#0" expanded="false" />
+            <element signature="e#19505#19514#0" expanded="true" />
+            <element signature="e#21211#21223#0" expanded="false" />
+            <element signature="method#gen#9;class#IRGen#0" expanded="false" />
+            <element signature="e#21906#21918#0" expanded="false" />
+            <element signature="e#23234#23247#0" expanded="false" />
+            <element signature="method#gen#11;class#IRGen#0" expanded="false" />
+            <element signature="e#23779#23793#0" expanded="false" />
+            <element signature="method#gen#12;class#IRGen#0" expanded="false" />
+            <element signature="e#24529#24596#0" expanded="false" />
+            <element signature="method#genAddr#0;class#IRGen#0" expanded="false" />
+            <element signature="e#24930#24941#0" expanded="false" />
+            <element signature="method#gen#13;class#IRGen#0" expanded="false" />
+            <element signature="e#25247#25260#0" expanded="false" />
+            <element signature="method#gen#14;class#IRGen#0" expanded="false" />
+            <element signature="e#25892#25900#0" expanded="true" />
+            <element signature="e#26099#26108#0" expanded="true" />
+            <element signature="e#26366#26378#0" expanded="false" />
+            <element signature="e#26726#26735#0" expanded="true" />
+            <element signature="e#27456#27465#0" expanded="true" />
+            <element signature="e#28300#28309#0" expanded="false" />
+            <element signature="method#gen#16;class#IRGen#0" expanded="false" />
+            <element signature="method#gen#17;class#IRGen#0" expanded="false" />
+            <element signature="e#29505#29518#0" expanded="false" />
+            <element signature="method#gen#18;class#IRGen#0" expanded="false" />
+            <element signature="e#29664#29678#0" expanded="false" />
+            <element signature="method#gen#19;class#IRGen#0" expanded="false" />
+            <element signature="e#29836#29849#0" expanded="false" />
+            <element signature="method#gen#20;class#IRGen#0" expanded="false" />
+            <element signature="method#gen#21;class#IRGen#0" expanded="false" />
           </folding>
         </state>
       </provider>

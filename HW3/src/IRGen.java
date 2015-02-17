@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
+//TODO: Make your code actualy use the class info helper functions....
+
 public class IRGen {
 
     static class GenException extends Exception {
@@ -255,36 +257,21 @@ public class IRGen {
 
         }
 
-        //#yolo
-        int j = cinfo.offsets.size() - 1;
-        if (j < 0) {
-            cinfo.offsets.add(8);
-            j = 0;
-        } else
-            cinfo.offsets.add(cinfo.offsets.get(j) + 8);
 
+        int j = 0;
         for (Ast.MethodDecl decl: n.mthds) {
             if (!decl.nm.equals("main")) {
-                int prevSum = cinfo.offsets.get(j);
+                int prevSum = j != 0 ? cinfo.offsets.get(j - 1) : -8;
                 cinfo.offsets.add(prevSum + 8);
                 j++;
             }
         }
 
-        for (Ast.VarDecl decl: n.flds) {
-            int prevSum = cinfo.offsets.get(j++);
 
-            if (decl.t instanceof Ast.IntType)
-                cinfo.offsets.add(prevSum + 4);
-            else if (decl.t instanceof Ast.BoolType)
-                cinfo.offsets.add(prevSum + 1);
-            else if (decl.t instanceof Ast.ArrayType || decl.t instanceof Ast.ObjType)
-                cinfo.offsets.add(prevSum + 8);
-        }
 
         cinfo.objSize = 0;
-        for (int i : cinfo.offsets)
-            cinfo.objSize += i;
+        for (String s: cinfo.vtable)
+            cinfo.objSize += 8;
 
 
         return cinfo;
@@ -297,7 +284,7 @@ public class IRGen {
     //
     public static void main(String[] args) throws Exception {
         //if (args.length == 1) {
-        String path = "src/tst/test07.ast";
+        String path = "src/tst/test20.ast";
         FileInputStream stream = new FileInputStream(path);//args[0]);
         Ast.Program p = new astParser(stream).Program();
         stream.close();
@@ -362,6 +349,7 @@ public class IRGen {
         for (String s : cinfo.vtable)
             temp.add(new IR.Global((s.equals("main") ? "" : n.nm + "_") + s));
 
+        if (temp.size() == 0) return null;
         return new IR.Data(new IR.Global("class_" + n.nm), cinfo.objSize, temp.toArray(new IR.Global[temp.size()]));
     }
 
@@ -421,8 +409,13 @@ public class IRGen {
                 listInst.addAll(test);
         }
 
+
         for (Ast.Stmt s : n.stmts)
             listInst.addAll(gen(s, cinfo, funcEnv));
+
+        if (!(n.stmts[n.stmts.length - 1] instanceof Ast.Return)) {
+            listInst.addAll(gen(new Ast.Return(null), cinfo, funcEnv));
+        }
 
         return new IR.Func(name, params, locals, listInst);
     }
@@ -443,6 +436,7 @@ public class IRGen {
         CodePack temp = gen(n.init, cinfo, env);
         //Ast.Assign ass = new Ast.Assign()
         IR.Move test = new IR.Move(new IR.Id(n.nm), temp.src);
+        ret.addAll(temp.code);
         ret.add(test);
         return ret;
     }
@@ -494,15 +488,15 @@ public class IRGen {
             if (env.containsKey(temp.nm)) {
                 IR.Move mv = new IR.Move(new IR.Id(temp.nm), gen(n.rhs, cinfo, env).src);
                 ret.add(mv);
-            } else {
-                AddrPack lhs = genAddr(n.lhs, cinfo, env);
-
-                IR.Store st = new IR.Store(lhs.type, lhs.addr, gen(n.rhs, cinfo, env).src);
-                ret.add(st);
             }
-        } else if (n.lhs instanceof Ast.ArrayElm)
+        }  else {
+            AddrPack lhs = genAddr(n.lhs, cinfo, env);
+
+            IR.Store st = new IR.Store(lhs.type, lhs.addr, gen(n.rhs, cinfo, env).src);
+            ret.add(st);
+        }/* if (n.lhs instanceof Ast.ArrayElm)
             throw new Exception("Fix genAssign");
-            //lhs = gen(n.lhs, cinfo, env).code;
+            //lhs = gen(n.lhs, cinfo, env).code;*/
 
         return ret;
     }
@@ -537,20 +531,49 @@ public class IRGen {
     // 8. Generate an indirect call with the global label
 
     static CodePack handleCall(Ast.Exp obj, String name, Ast.Exp[] args, ClassInfo cinfo, Env env, boolean retFlag) throws Exception {
+        CodePack ret;
+        List<IR.Inst> code = new ArrayList<IR.Inst>();
+
         CodePack opack = gen(obj, cinfo, env);
         ClassInfo baseInfo = getClassInfo(obj, cinfo, env);
-        int offset = baseInfo.offsets.get(baseInfo.vtable.indexOf(name));
+        int offset = baseInfo.offsets.get(baseInfo.vtable.indexOf(name)); //for call
 
-        Ast.Exp [] args2 = new Ast.Exp[args.length + 1];
-        args2[0] = obj;
-        for (int i = 0; i < args.length; i++)
-            args2[i+1] = args[i];
+        List<IR.Src> srcargs = new ArrayList<IR.Src>();
+        srcargs.add(gen(obj, cinfo, env).src);
+        for (Ast.Exp a : args)
+            srcargs.add(gen(a, cinfo, env).src);
 
+        IR.Temp descTemp = new IR.Temp();
+        IR.Temp callTemp = new IR.Temp();
+        IR.Load descLoad = new IR.Load(IR.Type.PTR, descTemp, new IR.Addr(opack.src, 0));
+        IR.Load callLoad = new IR.Load(IR.Type.PTR, callTemp, new IR.Addr(descTemp, offset));
+        IR.Temp retTemp = null;
+        IR.Type retType;
+        if (retFlag) {
+            retTemp = new IR.Temp();
+            Ast.Type astRetType = null;
 
-        throw new Exception("Not Done: handleCall [" + obj.getClass().toString() + "]");
-        //IR.Load odesc = new IR.Load()
+            for (int i = 0; i < baseInfo.cdecl.mthds.length; i++) {
+                if (baseInfo.cdecl.mthds[i].nm.equals(name)) {
+                    astRetType = baseInfo.cdecl.mthds[i].t;
+                    break;
+                }
+            }
 
-        //return null;
+            if (astRetType.equals(Ast.IntType))
+                retType = IR.Type.INT;
+            else if (astRetType.equals(Ast.BoolType))
+                retType = IR.Type.BOOL;
+            else
+                retType = IR.Type.PTR;
+        }
+        IR.Call call = new IR.Call(callTemp, true, srcargs, retTemp);
+        code.add(descLoad);
+        code.add(callLoad);
+        code.add(call);
+
+        ret = new CodePack(IR.Type.PTR, retFlag ? retTemp : opack.src, code);
+        return ret;
     }
 
     // If ---
@@ -601,6 +624,7 @@ public class IRGen {
             throw new Exception("Error: IF: bad cond type");*/
 
         CodePack cond = gen(n.cond, cinfo, env);
+        ret.addAll(cond.code);
         ret.add(new IR.CJump(IR.ROP.EQ, cond.src, new IR.BoolLit(false), l0.lab));
 
         ret.addAll(trueStmt);
@@ -617,7 +641,7 @@ public class IRGen {
     // Stmt s;
     //
     // (See class notes.)
-    //
+
     static List<IR.Inst> gen(Ast.While n, ClassInfo cinfo, Env env) throws Exception {
         List<IR.Inst> ret = new ArrayList<IR.Inst>();
         List<IR.Inst> stmt = gen(n.s, cinfo, env);
@@ -630,6 +654,7 @@ public class IRGen {
         ret.add(l0);
 
         CodePack cond = gen(n.cond, cinfo, env);
+        ret.addAll(cond.code);
         ret.add(new IR.CJump(IR.ROP.EQ, cond.src, new IR.BoolLit(false), l1.lab));
 
         ret.addAll(stmt);
@@ -648,7 +673,7 @@ public class IRGen {
     // 3. Otherwise, generate IR code for arg, and use its type info
     //    to decide which of the two functions, "printInt" and "printBool",
     //    to call
-    //
+
     static List<IR.Inst> gen(Ast.Print n, ClassInfo cinfo, Env env) throws Exception {
         ArrayList<IR.Inst> ret = new ArrayList<IR.Inst>();
         IR.Call test = null;
@@ -665,12 +690,14 @@ public class IRGen {
             printType = "printStr";
         } else {
             CodePack pack = gen((Ast.Exp)n.arg, cinfo, env);
+            ret.addAll(pack.code);
             args[0] = pack.src;
 
-            if (pack.type == IR.Type.INT)
-                printType = "printInt";
-            else if (pack.type == IR.Type.BOOL)
+            if (pack.type.equals(IR.Type.BOOL))
                 printType = "printBool";
+            else
+                printType = "printInt";
+
         }
 
         test = new IR.Call(new IR.Global(printType), false, args , null);
@@ -686,7 +713,7 @@ public class IRGen {
     // 1. If val is non-null, generate IR code for it, and generate an IR.Return
     //    with its value
     // 2. Otherwise, generate an IR.Return with no value
-    //
+
     static List<IR.Inst> gen(Ast.Return n, ClassInfo cinfo, Env env) throws Exception {
         ArrayList<IR.Inst> ret = new ArrayList<IR.Inst>();
         IR.Src arg = null;
@@ -702,7 +729,7 @@ public class IRGen {
     // EXPRESSIONS
 
     // 1. Dispatch a generic gen() call to a specific gen() routine
-    //
+
     static CodePack gen(Ast.Exp n, ClassInfo cinfo, Env env) throws Exception {
         if (n instanceof Ast.Call) return gen((Ast.Call) n, cinfo, env);
         if (n instanceof Ast.NewObj) return gen((Ast.NewObj) n, cinfo, env);
@@ -716,7 +743,7 @@ public class IRGen {
 
     // 2. Dispatch a generic genAddr call to a specific genAddr routine
     //    (Only one LHS Exp needs to be implemented for this assignment)
-    //
+
     static AddrPack genAddr(Ast.Exp n, ClassInfo cinfo, Env env) throws Exception {
         if (n instanceof Ast.Field) return genAddr((Ast.Field) n, cinfo, env);
         throw new GenException(" LHS Exp node not supported in this codegen: " + n);
@@ -726,7 +753,7 @@ public class IRGen {
     // Exp obj;
     // String nm;
     // Exp[] args;
-    //
+
     static CodePack gen(Ast.Call n, ClassInfo cinfo, Env env) throws Exception {
         if (n.obj != null)
             return handleCall(n.obj, n.nm, n.args, cinfo, env, true);
@@ -742,34 +769,51 @@ public class IRGen {
     //  3. Cosntruct a malloc call to allocate space for the object
     //  4. Store a pointer to the class's descriptor into the first slot of
     //     the allocated space
-    //
+
     static CodePack gen(Ast.NewObj n, ClassInfo cinfo, Env env) throws Exception {
+        CodePack ret;
 
+        ClassInfo newc = classEnv.get(n.nm);
+        IR.Global callName = new IR.Global("malloc");
+        List<IR.Src> args = new ArrayList<IR.Src>();
+        args.add(new IR.IntLit(newc.objSize));
+        IR.Temp dest = new IR.Temp();
 
-        //    ... need code
-        throw new Exception("Not Done: genNewObj");
+        IR.Call malloc = new IR.Call(callName, false, args, dest);
+        List<IR.Inst> test = new ArrayList<IR.Inst>();
+        test.add(malloc);
 
-        //return null;
+        IR.Store store = new IR.Store(IR.Type.PTR, new IR.Addr(dest,0),new IR.Global("class_" + newc.className()));
+        test.add(store);
+
+        ret = new CodePack(IR.Type.PTR, dest, test);
+
+        return ret;
     }
 
     // Field ---
     // Exp obj;
     // String nm;
     //
-
     // 1. gen()
     //
     // Codegen Guideline:
     //   1.1 Call genAddr() to generate field variable's address
     //   1.2 Add an IR.Load to get its value
-    //
+
     static CodePack gen(Ast.Field n, ClassInfo cinfo, Env env) throws Exception {
+        CodePack ret;
+        List<IR.Inst> code = new ArrayList<IR.Inst>();
 
+        AddrPack addr = genAddr(n, cinfo, env);
 
-        //    ... need code
-        throw new Exception("Not Done: genField");
+        IR.Load load = new IR.Load(addr.type, new IR.Temp(), addr.addr);
+        code.addAll(addr.code);
+        code.add(load);
 
-        //return null;
+        ret = new CodePack(addr.type, load.addr.base, code);
+
+        return ret;
     }
 
     // 2. genAddr()
@@ -779,14 +823,38 @@ public class IRGen {
     //   2.2 Call getClassInfo() on the obj component to get base ClassInfo
     //   2.3 Access base ClassInfo rec to get field variable's offset
     //   2.4 Generate an IR.Addr based on the offset
-    //
+
     static AddrPack genAddr(Ast.Field n, ClassInfo cinfo, Env env) throws Exception {
+        AddrPack ret;
+        List<IR.Inst> code = new ArrayList<IR.Inst>();
+
+        CodePack obj = gen(n.obj, cinfo, env);
+        ClassInfo newInfo = getClassInfo(n.obj, cinfo, env);
+
+        int offset = newInfo.vtable.size() != 0 ? newInfo.offsets.get(newInfo.vtable.size() - 1) : 0;
+        int i = 0;
+        IR.Type t = IR.Type.PTR;
+        for (Ast.VarDecl v : newInfo.fdecls) {
+            if (v.nm.equals(n.nm)) {
+                offset += newInfo.offsets.get(i);
+                if (v.t.equals(Ast.IntType))
+                    t = IR.Type.INT;
+                else if (v.t.equals(Ast.BoolType))
+                    t = IR.Type.BOOL;
+                else
+                    t = IR.Type.PTR;
+            }
+
+            i++;
+        }
+
+        IR.Addr addr = new IR.Addr(obj.src, offset);
+        code.addAll(obj.code);
 
 
-        //    ... need code
-        throw new Exception("Not Done: genAddr");
+        ret = new AddrPack(t, addr, code);
 
-        //return null;
+        return ret;
     }
 
     // Id ---
@@ -799,13 +867,13 @@ public class IRGen {
     //  3. Otherwise, the Id is an instance variable. Convert it into an
     //     Ast.Field node with Ast.This() as its obj, and invoke the gen() routine
     //     on this new node
-    //
+
     static CodePack gen(Ast.Id n, ClassInfo cinfo, Env env) throws Exception {
         CodePack ret = null;
         if (env.containsKey(n.nm)) {
-            if (env.get(n.nm) instanceof ast.Ast.IntType)
+            if (env.get(n.nm) .equals( ast.Ast.IntType))
                 ret = new CodePack(IR.Type.INT, new IR.Id(n.nm));
-            else if (env.get(n.nm) instanceof ast.Ast.BoolType)
+            else if (env.get(n.nm) .equals( ast.Ast.BoolType))
                 ret = new CodePack(IR.Type.BOOL, new IR.Id(n.nm));
             else
                 ret = new CodePack(IR.Type.PTR, new IR.Id(n.nm));
@@ -819,34 +887,34 @@ public class IRGen {
     }
 
     // This ---
-    //
+
     static CodePack gen(Ast.This n, ClassInfo cinfo) throws Exception {
         return new CodePack(IR.Type.PTR, thisObj);
     }
 
     // IntLit ---
     // int i;
-    //
+
     static CodePack gen(Ast.IntLit n) throws Exception {
         return new CodePack(IR.Type.INT, new IR.IntLit(n.i));
     }
 
     // BoolLit ---
     // boolean b;
-    //
+
     static CodePack gen(Ast.BoolLit n) throws Exception {
         return new CodePack(IR.Type.BOOL, n.b ? IR.TRUE : IR.FALSE);
     }
 
     // StrLit ---
     // String s;
-    //
+
     static CodePack gen(Ast.StrLit n) throws Exception {
         return new CodePack(null, new IR.StrLit(n.s));
     }
 
     // Type mapping (AST -> IR)
-    //
+
     static IR.Type gen(Ast.Type n) throws Exception {
         if (n == null) return null;
         if (n instanceof Ast.IntType) return IR.Type.INT;
