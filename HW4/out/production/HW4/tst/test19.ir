@@ -1,0 +1,30 @@
+# IR1 Program
+
+_go (n)
+(i)
+{
+ i = 0
+ t1 = n > 0
+ if t1 == false goto L0
+ call _printInt(n)
+ t2 = n - 1
+ t3 = call _back(t2)
+ i = t3
+L0:
+ return i
+}
+
+_back (n)
+(i)
+{
+ t4 = call _go(n)
+ i = t4
+ return 0
+}
+
+_main ()
+{
+ t5 = call _go(5)
+ call _printInt(t5)
+ return 
+}

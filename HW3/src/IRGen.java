@@ -577,12 +577,12 @@ public class IRGen {
         ClassInfo baseInfo = getClassInfo(obj, cinfo, env); //Retrive base class info
         int offset = baseInfo.methodOffset(name); //using the base class, get method offset
 
-        //Create a list of args.
-        //This adds the object as the first arg.
-        List<IR.Src> srcargs = new ArrayList<IR.Src>();
-        srcargs.add(gen(obj, cinfo, env).src);
-        for (Ast.Exp a : args)
-            srcargs.add(gen(a, cinfo, env).src);
+            //Create a list of args.
+            //This adds the object as the first arg.
+            List<IR.Src> srcargs = new ArrayList<IR.Src>();
+            srcargs.add(gen(obj, cinfo, env).src);
+            for (Ast.Exp a : args)
+                srcargs.add(gen(a, cinfo, env).src);
 
         //Declare nesseary temps for the IR loads.
         IR.Temp descTemp = new IR.Temp();

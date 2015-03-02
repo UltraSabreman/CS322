@@ -1,0 +1,21 @@
+# IR1 Program
+
+_foo (i, j)
+{
+ t1 = i + j
+ return t1
+}
+
+_main ()
+(b, i, j)
+{
+ b = true
+ t2 = call _foo(1, 2)
+ i = t2
+ t3 = 2 * 3
+ j = t3
+ call _printBool(b)
+ call _printInt(i)
+ call _printInt(j)
+ return 
+}

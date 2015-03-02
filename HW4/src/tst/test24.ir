@@ -1,0 +1,23 @@
+# IR1 Program
+
+_value (i, j, k)
+{
+ t1 = i + j
+ t2 = t1 + k
+ return t2
+}
+
+_go ()
+{
+ t3 = call _value(1, 1, 1)
+ t4 = call _value(2, 2, 2)
+ t5 = t3 + t4
+ return t5
+}
+
+_main ()
+{
+ t6 = call _go()
+ call _printInt(t6)
+ return 
+}

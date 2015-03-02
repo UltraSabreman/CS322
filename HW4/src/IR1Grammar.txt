@@ -1,0 +1,43 @@
+IR1 Grammar (for CS322 W'15)
+
+Program -> {Func} 
+
+Func    -> <Global> VarList [VarList] "{" {Inst} "}"
+
+VarList -> "(" [<id> {"," <id>}] ")"
+
+Inst -> Binop | Unop   | Move  | Load | Store 
+     |  Call  | Return | CJump | Jump | LabelDec
+
+Binop    -> Src BOP Src                         
+Unop     -> Dest "=" UOP Src                    
+Move     -> Dest "=" Src                        
+Load     -> Dest "=" Addr                       
+Store    -> Addr "=" Src                        
+Call     -> [Dest "="] "call" <Global> ArgList  
+Return   -> "return" [Src]                      
+CJump    -> "if" Src ROP Src "goto" Label     
+Jump     -> "goto" Label                      
+LabelDec -> Label ":"                         
+
+Src   	-> <Id> | <Temp> | <IntLit> | <BoolLit> | <StrLit> 
+Dest  	-> <Id> | <Temp> 
+Addr  	-> [<IntLit>] "[" Src "]"
+ArgList -> "(" [Src {"," Src}] ")"
+Label   -> <Id>
+
+BOP -> AOP | ROP
+AOP -> "+" | "-" | "*" | "/" | "&&" | "||"
+ROP -> "==" | "!=" | "<" | "<=" | ">" | >="
+UOP -> "-" | "!"
+
+<Id:     (<letter> (<letter>|<digit>|"_")*)>
+<Temp:   "t" (<digit>)+>
+<Global: "_" <Id>>
+
+Pre-Defined Funcitons:
+
+_malloc(size)    // memory allocation
+_printInt(arg)   // print an int value (including address value)
+_printBool(arg)  // print a boolean value
+_printStr(str)   // print a string

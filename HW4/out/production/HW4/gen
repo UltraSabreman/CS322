@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Script for running miniJava compiler tests. 
+# (For CS322 Language and Compiler Design, Portland State University.)
+#
+# Usage:
+#   ./gen tst/test01.ir  -- test a single program 
+#   ./gen tst/test*.ir   -- test all programs
+#
+
+for i
+do
+	d=`dirname $i`
+	f=`basename $i .ir`
+	echo -n "$d/$f: "
+	java CodeGen $d/$f.ir 1> $d/$f.s
+	if [ -r $d/$f.s.ref ]; then
+          diff -w $d/$f.s $d/$f.s.ref > $d/$f.s.diff; 
+          if [ -s $d/$f.s.diff ]; then 
+            echo "differs from ref (see $f.s.diff)"; 
+          else
+            echo "matches ref"; 
+	    rm $d/$f.s.diff; 
+          fi
+	else
+            echo "no ref to compare"; 
+        fi
+done
+exit 0
+

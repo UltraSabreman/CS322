@@ -1,0 +1,7 @@
+# IR1 Program
+
+_main ()
+{
+ call _printStr("Hello World!")
+ return 
+}

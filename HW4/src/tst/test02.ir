@@ -1,0 +1,13 @@
+# IR1 Program
+
+_main ()
+(b, i, j)
+{
+ b = true
+ i = 2
+ j = 6
+ call _printBool(b)
+ call _printInt(i)
+ call _printInt(j)
+ return 
+}
