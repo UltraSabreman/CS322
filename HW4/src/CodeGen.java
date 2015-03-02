@@ -18,7 +18,7 @@ class CodeGen {
 
     public static void main(String[] args) throws Exception {
         //if (args.length == 1) {
-        String filePath = "src/tst/hello.ir";
+        String filePath = "src/tst/test03.ir";
         FileInputStream stream = new FileInputStream(filePath);//args[0]);
         IR1.Program p = new ir1Parser(stream).Program();
         stream.close();
@@ -129,12 +129,11 @@ class CodeGen {
 
 
         // - move the incoming actual arguments to their assigned locations
-        if (regMap.size() > 6) throw new GenException("More then 6 args to func: " + n.name);
+        if (n.params.length > 6) throw new GenException("More then 6 args to func: " + n.name);
         List<X86.Reg> src = new ArrayList<X86.Reg>();
-        for (IR1.Dest d : regMap.keySet()) {
-            //TODO: make sure this is a good filter. Is it needed?
-            if (d instanceof IR1.Id)
-                src.add(regMap.get(d));
+        int ind = 0;
+        for (String s : n.params){
+            src.add(X86.argRegs[ind++]);
         }
 
         X86.parallelMove(src.size(), src.toArray(new X86.Reg[src.size()]), X86.argRegs, tempReg1);
@@ -197,9 +196,24 @@ class CodeGen {
     // - generate "movzbq" to size--extend the result register
     //
     static void gen(IR1.Binop n) throws Exception {
+        // - call gen_source() to generate code for both left and right
+        X86.Reg left = gen_source(n.src1, tempReg1);
+        X86.Reg right = gen_source(n.src1, tempReg2);
 
-        // ... need code ...
+        if (n.op instanceof IR1.AOP) {
+            if (!n.op.equals(IR1.AOP.DIV)) {
 
+            } else {
+
+            }
+        } else if (n.op instanceof IR1.ROP) {
+
+
+        }
+
+
+
+        throw new GenException("Not Implimented");
 
     }
 
@@ -214,6 +228,7 @@ class CodeGen {
     // - generate code for the op
     //
     static void gen(IR1.Unop n) throws Exception {
+        throw new GenException("Not Implimented");
 
 
     }
@@ -227,9 +242,8 @@ class CodeGen {
     // - generate a "mov"
     //
     static void gen(IR1.Move n) throws Exception {
-
-        // ... need code ...
-
+        X86.Reg src = gen_source(n.src, tempReg1);
+        X86.emitMov(src.s, src, regMap.get(n.dst));
 
     }
 
@@ -244,6 +258,7 @@ class CodeGen {
     //     are integers)
     //
     static void gen(IR1.Load n) throws Exception {
+        throw new GenException("Not Implimented");
 
         // ... need code ...
 
@@ -262,6 +277,7 @@ class CodeGen {
     //     are all integers)
     //
     static void gen(IR1.Store n) throws Exception {
+        throw new GenException("Not Implimented");
 
         // ... need code ...
 
@@ -292,6 +308,7 @@ class CodeGen {
     //     suffixes are the same
     //
     static void gen(IR1.CJump n) throws Exception {
+        throw new GenException("Not Implimented");
 
         // ... need code ...
 
@@ -306,6 +323,7 @@ class CodeGen {
     //   . again, add func's name in front of IR1's label name
     //
     static void gen(IR1.Jump n) throws Exception {
+        throw new GenException("Not Implimented");
 
         // ... need code ...
 
@@ -371,14 +389,17 @@ class CodeGen {
 
         // - restore any saved callee-save registers
         // - save any callee-save registers on the stack
-        int calleeSaveSize = 0;
+        List<X86.Reg> regs = new ArrayList<X86.Reg>();
         for (Map.Entry<IR1.Dest, X86.Reg> me : regMap.entrySet()) {
             X86.Reg r = (X86.Reg)me.getValue();
-            if (regIsCalee(r)) {
-                calleeSaveSize++;
-                X86.emit1("pop"+r.s, r);
-            }
+            if (regIsCalee(r))
+                regs.add(r);
         }
+
+        Collections.reverse(regs);
+        for (X86.Reg r : regs)
+            X86.emit1("pop" + r.s, r);
+
 
         // - emit a "ret"
         X86.emit("\tret");
@@ -409,11 +430,11 @@ class CodeGen {
         if (n instanceof IR1.Id || n instanceof IR1.Temp) {
             return regMap.get(n);
         } else if (n instanceof IR1.IntLit) {
-            X86.emitMov(X86.Size.L, new X86.Imm(((IR1.IntLit)n).i), temp);
+            X86.emitMov(temp.s, new X86.Imm(((IR1.IntLit)n).i), temp);
             return temp;
         } else if (n instanceof IR1.BoolLit) {
             boolean f = ((IR1.BoolLit)n).b;
-            X86.emitMov(X86.Size.B, new X86.Imm(f ? 1 : 0), temp);
+            X86.emitMov(temp.s, new X86.Imm(f ? 1 : 0), temp);
             return temp;
         } else if (n instanceof IR1.StrLit) {
             IR1.StrLit str = (IR1.StrLit)n;
