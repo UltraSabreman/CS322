@@ -105,7 +105,12 @@ class CodeGen {
             System.out.print("\t\t\t  # " + me.getKey() + "\t" + me.getValue() + "\n");
 
         // - emit the function header
-        X86.emitGLabel(new X86.GLabel("_" + fnName));
+        //
+        X86.GLabel l = new X86.GLabel("_" + fnName);
+
+        System.out.println("\t.p2align 4,0x90");
+        X86.emit1(".globl", l);
+        X86.emitGLabel(l);
 
         // - save any callee-save registers on the stack
         int calleeSaveSize = 0;
@@ -327,11 +332,14 @@ class CodeGen {
             throw new GenException("More then 6 args to call: " + n.name);
 
         // - move arguments into the argument regs
-        int i = 0;
-        for (IR1.Src s : n.args) {
-            X86.Reg src = gen_source(s, tempReg1);
-            X86.emitMov(src.s, src, X86.argRegs[i++]);
+        //TODO: registeredargs vs immediate args?
+        /*for (Map.Entry<IR1.Dest, X86.Reg> me : regMap.entrySet()) {
         }
+        //X86.parallelMove(-1, null, X86.argRegs, tempReg1);*/
+
+        int i = 0;
+        for (IR1.Src s : n.args)
+            gen_source(s, X86.argRegs[i++]);
 
         // - emit a "call" with a global label (i.e. "_" preceding func's name)
         X86.emit1("call", new X86.GLabel("_" + n.name));
@@ -353,10 +361,27 @@ class CodeGen {
     // - emit a "ret"
     //
     static void gen(IR1.Return n) throws Exception {
+        // - if there is a value, emit a "mov" to move it to rax
+        if (n.val != null) {
+            gen_source(n.val, X86.RAX);
+        }
+        // - pop the frame (add framesize back to stack pointer)
+        frameSize -= 8;
+        X86.emit2("addq", new X86.Imm(8), X86.RSP);
 
-        // ... need code ...
+        // - restore any saved callee-save registers
+        // - save any callee-save registers on the stack
+        int calleeSaveSize = 0;
+        for (Map.Entry<IR1.Dest, X86.Reg> me : regMap.entrySet()) {
+            X86.Reg r = (X86.Reg)me.getValue();
+            if (regIsCalee(r)) {
+                calleeSaveSize++;
+                X86.emit1("pop"+r.s, r);
+            }
+        }
 
-
+        // - emit a "ret"
+        X86.emit("\tret");
     }
 
     // OPERANDS
@@ -391,6 +416,13 @@ class CodeGen {
             X86.emitMov(X86.Size.B, new X86.Imm(f ? 1 : 0), temp);
             return temp;
         } else if (n instanceof IR1.StrLit) {
+            IR1.StrLit str = (IR1.StrLit)n;
+            stringLiterals.add(str.s);
+            //TODO: %rip need to be here?
+            X86.AddrName l = new X86.AddrName("_S" + stringLiterals.indexOf(str.s));
+
+            //TODO: is it always q?
+            X86.emit2("leaq", l, temp);
             return temp;
         }
 
