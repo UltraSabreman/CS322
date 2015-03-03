@@ -113,19 +113,20 @@ class CodeGen {
         X86.emitGLabel(l);
 
         // - save any callee-save registers on the stack
-        int calleeSaveSize = 0;
-        for (Map.Entry<IR1.Dest, X86.Reg> me : regMap.entrySet()) {
-            X86.Reg r = (X86.Reg)me.getValue();
-            if (regIsCalee(r)) {
-                calleeSaveSize++;
+        List<X86.Reg> pushed = new ArrayList<X86.Reg>();
+        for (IR1.Dest d : regMap.keySet()) {
+            X86.Reg r = regMap.get(d);
+            if (regIsCalee(r) && !pushed.contains(r)) {
+                pushed.add(r);
                 X86.emit1("push"+r.s, r);
             }
         }
 
         // - make space for the local frame
-        if ((calleeSaveSize % 16) == 0)
-        	  frameSize += 8;
-        X86.emit2("subq", new X86.Imm(8), X86.RSP);
+        if ((pushed.size() % 16) == 0) {
+            frameSize += 8;
+            X86.emit2("subq", new X86.Imm(8), X86.RSP);
+        }
 
 
         // - move the incoming actual arguments to their assigned locations
@@ -196,24 +197,69 @@ class CodeGen {
     // - generate "movzbq" to size--extend the result register
     //
     static void gen(IR1.Binop n) throws Exception {
+        X86.Reg dest = regMap.get(n.dst);
+        if (dest == null) return;
+
         // - call gen_source() to generate code for both left and right
-        X86.Reg left = gen_source(n.src1, tempReg1);
+        X86.Reg left = gen_source(n.src2, tempReg1);
         X86.Reg right = gen_source(n.src1, tempReg2);
 
+        //TODO: make sure right operand is not occupying the dst reg?
+        // * Regular cases (ADD, SUB, MUL, AND, OR):
         if (n.op instanceof IR1.AOP) {
             if (!n.op.equals(IR1.AOP.DIV)) {
+                if (right.equals(dest)) {
+                    X86.emitMov(right.s, right, tempReg2);
+                    right = tempReg1;
+                }
 
+                X86.emitMov(right.s, right, dest);
+                if (n.op.equals(IR1.AOP.ADD)) {
+                    X86.emit2("add" + left.s, left, dest);
+                } else if (n.op.equals(IR1.AOP.SUB)) {
+                    X86.emit2("sub"+left.s, left, dest);
+                } else if (n.op.equals(IR1.AOP.MUL)) {
+                    X86.emit2("imul"+left.s, left, dest);
+                } else if (n.op.equals(IR1.AOP.AND)) {
+                    X86.emit2("and"+left.s, left, dest);
+                } else if (n.op.equals(IR1.AOP.OR)) {
+                    X86.emit2("or"+left.s, left, dest);
+                }
             } else {
+                //TODO: is this right?
+                X86.emitMov(right.s, right, X86.RAX);
+                if (right.equals(X86.RAX) || right.equals(X86.RDX)) {
+                    X86.emitMov(right.s, right, tempReg1);
+                    right = tempReg1;
+                }
+                X86.emit("\tcgto");
+                X86.emit1("idivq", tempReg1);
+                X86.emitMov(tempReg1.s, tempReg1, dest);
 
             }
         } else if (n.op instanceof IR1.ROP) {
-
-
+            // * For relational ops:
+            // - generate "cmp" and "set"
+            //   . note that set takes a byte-sized register
+            // - generate "movzbq" to size--extend the result register
+            X86.Reg test = X86.resize_reg(X86.Size.B, dest);
+            X86.emit2("cmp" + right.s, right, left);
+            if (n.op.equals(IR1.ROP.EQ)) {
+                X86.emit1("sete", test);
+            } else if (n.op.equals(IR1.ROP.NE)) {
+                X86.emit1("setne", test);
+            } else if (n.op.equals(IR1.ROP.LE)) {
+                X86.emit1("setle", test);
+            } else if (n.op.equals(IR1.ROP.LT)) {
+                X86.emit1("setel", test);
+            } else if (n.op.equals(IR1.ROP.GT)) {
+                X86.emit1("seteg", test);
+            } else if (n.op.equals(IR1.ROP.GE)) {
+                X86.emit1("setege", test);
+            }
+            X86.emit2("movzb"+dest.s, test, dest);
         }
 
-
-
-        throw new GenException("Not Implimented");
 
     }
 
@@ -356,8 +402,10 @@ class CodeGen {
         //X86.parallelMove(-1, null, X86.argRegs, tempReg1);*/
 
         int i = 0;
-        for (IR1.Src s : n.args)
-            gen_source(s, X86.argRegs[i++]);
+        for (IR1.Src s : n.args) {
+            X86.Reg t = gen_source(s, tempReg1);
+            X86.emitMov(t.s, t, X86.argRegs[i++]);
+        }
 
         // - emit a "call" with a global label (i.e. "_" preceding func's name)
         X86.emit1("call", new X86.GLabel("_" + n.name));
@@ -381,7 +429,8 @@ class CodeGen {
     static void gen(IR1.Return n) throws Exception {
         // - if there is a value, emit a "mov" to move it to rax
         if (n.val != null) {
-            gen_source(n.val, X86.RAX);
+            X86.Reg t = gen_source(n.val, tempReg1);
+            X86.emitMov(t.s, t, X86.RAX);
         }
         // - pop the frame (add framesize back to stack pointer)
         frameSize -= 8;
@@ -392,7 +441,7 @@ class CodeGen {
         List<X86.Reg> regs = new ArrayList<X86.Reg>();
         for (Map.Entry<IR1.Dest, X86.Reg> me : regMap.entrySet()) {
             X86.Reg r = (X86.Reg)me.getValue();
-            if (regIsCalee(r))
+            if (regIsCalee(r) && !regs.contains(r))
                 regs.add(r);
         }
 
