@@ -17,16 +17,17 @@ class CodeGen {
     }
 
     public static void main(String[] args) throws Exception {
-        //if (args.length == 1) {
-        String filePath = "src/tst/test03.ir";
-        FileInputStream stream = new FileInputStream(filePath);//args[0]);
+        if (args.length == 1) {
+        //String filePath = "src/tst/test10.ir";
+        //FileInputStream stream = new FileInputStream(filePath);//args[0]);
+        FileInputStream stream = new FileInputStream(args[0]);
         IR1.Program p = new ir1Parser(stream).Program();
         stream.close();
         // IR1.indexed = true;
         gen(p);
-        //} else {
-        //  System.out.println("You must provide an input file name.");
-        //}
+        } else {
+          System.out.println("You must provide an input file name.");
+        }
     }
 
     //----------------------------------------------------------------------------------
@@ -44,6 +45,7 @@ class CodeGen {
     //
     static Map<IR1.Dest, X86.Reg> regMap;        // register mapping
     static int frameSize;            // in bytes
+    static boolean addedToFrame;
     static String fnName;            // function's name
 
 
@@ -112,19 +114,20 @@ class CodeGen {
         X86.emit1(".globl", l);
         X86.emitGLabel(l);
 
+        int calleeSize = 0;
         // - save any callee-save registers on the stack
-        List<X86.Reg> pushed = new ArrayList<X86.Reg>();
-        for (IR1.Dest d : regMap.keySet()) {
-            X86.Reg r = regMap.get(d);
-            if (regIsCalee(r) && !pushed.contains(r)) {
-                pushed.add(r);
-                X86.emit1("push"+r.s, r);
+        for (X86.Reg r : X86.calleeSaveRegs) {
+            if (regMap.values().contains(r)) {
+                X86.emit1("push" + r.s, r);
+                calleeSize+=r.s.bytes;
             }
         }
 
+
         // - make space for the local frame
-        if ((pushed.size() % 16) == 0) {
+        if ((calleeSize % 16) == 0) {
             frameSize += 8;
+            addedToFrame = true;
             X86.emit2("subq", new X86.Imm(8), X86.RSP);
         }
 
@@ -132,17 +135,25 @@ class CodeGen {
         // - move the incoming actual arguments to their assigned locations
         if (n.params.length > 6) throw new GenException("More then 6 args to func: " + n.name);
         List<X86.Reg> src = new ArrayList<X86.Reg>();
+        List<X86.Reg> dst = new ArrayList<X86.Reg>();
         int ind = 0;
         for (String s : n.params){
             src.add(X86.argRegs[ind++]);
+
+            IR1.Id temp = new IR1.Id(s);
+            if (regMap.containsKey(temp))
+                dst.add(regMap.get(temp));
         }
 
-        X86.parallelMove(src.size(), src.toArray(new X86.Reg[src.size()]), X86.argRegs, tempReg1);
+        if (dst.size() > 0)
+            X86.parallelMove(src.size(), src.toArray(new X86.Reg[src.size()]), dst.toArray(new X86.Reg[src.size()]), tempReg1);
 
         // - emit code for the body
         for (IR1.Inst i : n.code) {
             gen(i);
         }
+
+        addedToFrame = false;
     }
 
     // INSTRUCTIONS
@@ -201,16 +212,16 @@ class CodeGen {
         if (dest == null) return;
 
         // - call gen_source() to generate code for both left and right
-        X86.Reg left = gen_source(n.src2, tempReg1);
-        X86.Reg right = gen_source(n.src1, tempReg2);
 
         //TODO: make sure right operand is not occupying the dst reg?
         // * Regular cases (ADD, SUB, MUL, AND, OR):
         if (n.op instanceof IR1.AOP) {
+            X86.Reg left = gen_source(n.src2, tempReg1);
+            X86.Reg right = gen_source(n.src1, tempReg2);
             if (!n.op.equals(IR1.AOP.DIV)) {
-                if (right.equals(dest)) {
-                    X86.emitMov(right.s, right, tempReg2);
-                    right = tempReg1;
+                if (left.equals(dest)) {
+                    X86.emitMov(left.s, left, tempReg1);
+                    left = tempReg1;
                 }
 
                 X86.emitMov(right.s, right, dest);
@@ -228,13 +239,13 @@ class CodeGen {
             } else {
                 //TODO: is this right?
                 X86.emitMov(right.s, right, X86.RAX);
-                if (right.equals(X86.RAX) || right.equals(X86.RDX)) {
-                    X86.emitMov(right.s, right, tempReg1);
-                    right = tempReg1;
+                if (left.equals(X86.RAX) || left.equals(X86.RDX)) {
+                    X86.emitMov(left.s, left, tempReg1);
+                    left = tempReg1;
                 }
-                X86.emit("\tcgto");
-                X86.emit1("idivq", tempReg1);
-                X86.emitMov(tempReg1.s, tempReg1, dest);
+                X86.emit("\tcqto");
+                X86.emit1("idivq", left);
+                X86.emitMov(right.s, X86.RAX, dest);
 
             }
         } else if (n.op instanceof IR1.ROP) {
@@ -242,8 +253,11 @@ class CodeGen {
             // - generate "cmp" and "set"
             //   . note that set takes a byte-sized register
             // - generate "movzbq" to size--extend the result register
+            X86.Reg left = gen_source(n.src2, tempReg2);
+            X86.Reg right = gen_source(n.src1, tempReg1);
+
             X86.Reg test = X86.resize_reg(X86.Size.B, dest);
-            X86.emit2("cmp" + right.s, right, left);
+            X86.emit2("cmp" + left.s, left, right);
             if (n.op.equals(IR1.ROP.EQ)) {
                 X86.emit1("sete", test);
             } else if (n.op.equals(IR1.ROP.NE)) {
@@ -251,13 +265,13 @@ class CodeGen {
             } else if (n.op.equals(IR1.ROP.LE)) {
                 X86.emit1("setle", test);
             } else if (n.op.equals(IR1.ROP.LT)) {
-                X86.emit1("setel", test);
+                X86.emit1("setl", test);
             } else if (n.op.equals(IR1.ROP.GT)) {
-                X86.emit1("seteg", test);
+                X86.emit1("setg", test);
             } else if (n.op.equals(IR1.ROP.GE)) {
-                X86.emit1("setege", test);
+                X86.emit1("setge", test);
             }
-            X86.emit2("movzb"+dest.s, test, dest);
+            X86.emit2("movzbq", test, dest);
         }
 
 
@@ -274,8 +288,16 @@ class CodeGen {
     // - generate code for the op
     //
     static void gen(IR1.Unop n) throws Exception {
-        throw new GenException("Not Implimented");
+        X86.Reg dst = regMap.get(n.dst);
+        if (dst == null) return;
+        X86.Reg src = gen_source(n.src, tempReg1);
 
+        X86.emitMov(dst.s, src, dst);
+
+        if (n.op.equals(IR1.UOP.NEG))
+            X86.emit1("neg" + dst.s, dst);
+        else if (n.op.equals(IR1.UOP.NOT))
+            X86.emit1("not" + dst.s, dst);
 
     }
 
@@ -288,8 +310,10 @@ class CodeGen {
     // - generate a "mov"
     //
     static void gen(IR1.Move n) throws Exception {
+        X86.Reg dest = regMap.get(n.dst);
+        if (dest == null) return;
         X86.Reg src = gen_source(n.src, tempReg1);
-        X86.emitMov(src.s, src, regMap.get(n.dst));
+        X86.emitMov(src.s, src, dest);
 
     }
 
@@ -304,11 +328,11 @@ class CodeGen {
     //     are integers)
     //
     static void gen(IR1.Load n) throws Exception {
-        throw new GenException("Not Implimented");
+        X86.Reg dest = regMap.get(n.dst);
+        if (dest == null) return;
+        X86.Mem addr = (X86.Mem)gen_addr(n.addr, tempReg1);
 
-        // ... need code ...
-
-
+        X86.emit2("movslq", addr, dest);
     }
 
     // Store ---
@@ -323,10 +347,10 @@ class CodeGen {
     //     are all integers)
     //
     static void gen(IR1.Store n) throws Exception {
-        throw new GenException("Not Implimented");
+        X86.Reg src = gen_source(n.src, tempReg1);
+        X86.Mem addr = (X86.Mem)gen_addr(n.addr, tempReg2);
 
-        // ... need code ...
-
+        X86.emitMov(X86.Size.L, X86.resize_reg(X86.Size.L,src), addr);
 
     }
 
@@ -354,7 +378,26 @@ class CodeGen {
     //     suffixes are the same
     //
     static void gen(IR1.CJump n) throws Exception {
-        throw new GenException("Not Implimented");
+        X86.Reg left = gen_source(n.src1, tempReg1);
+        X86.Reg right = gen_source(n.src2, tempReg2);
+
+        X86.emit2("cmp" + right.s, right, left);
+        X86.Label l = new X86.Label(fnName + "_" + n.lab.name);
+
+        if (n.op.equals(IR1.ROP.EQ))
+            X86.emit1("je", l);
+        else if (n.op.equals(IR1.ROP.NE))
+            X86.emit1("jne", l);
+        else if (n.op.equals(IR1.ROP.LT))
+            X86.emit1("jl", l);
+        else if (n.op.equals(IR1.ROP.LE))
+            X86.emit1("jle", l);
+        else if (n.op.equals(IR1.ROP.GT))
+            X86.emit1("jg", l);
+        else if (n.op.equals(IR1.ROP.GE))
+            X86.emit1("jge", l);
+
+
 
         // ... need code ...
 
@@ -369,11 +412,7 @@ class CodeGen {
     //   . again, add func's name in front of IR1's label name
     //
     static void gen(IR1.Jump n) throws Exception {
-        throw new GenException("Not Implimented");
-
-        // ... need code ...
-
-
+       X86.emit1("jmp", new X86.Label(fnName + "_" + n.lab));
     }
 
     // Call ---
@@ -429,26 +468,31 @@ class CodeGen {
     static void gen(IR1.Return n) throws Exception {
         // - if there is a value, emit a "mov" to move it to rax
         if (n.val != null) {
-            X86.Reg t = gen_source(n.val, tempReg1);
-            X86.emitMov(t.s, t, X86.RAX);
+            X86.Reg dest = gen_source(n.val, tempReg1);
+            //if (!dest.equals(X86.RAX))
+                X86.emitMov(dest.s, dest, X86.RAX);
         }
         // - pop the frame (add framesize back to stack pointer)
-        frameSize -= 8;
-        X86.emit2("addq", new X86.Imm(8), X86.RSP);
+        if (addedToFrame) {
+            frameSize -= 8;
+            X86.emit2("addq", new X86.Imm(8), X86.RSP);
+        }
 
         // - restore any saved callee-save registers
         // - save any callee-save registers on the stack
+
+        int calleeSize =0;
         List<X86.Reg> regs = new ArrayList<X86.Reg>();
-        for (Map.Entry<IR1.Dest, X86.Reg> me : regMap.entrySet()) {
-            X86.Reg r = (X86.Reg)me.getValue();
-            if (regIsCalee(r) && !regs.contains(r))
+        for (X86.Reg r : X86.calleeSaveRegs) {
+            if (regMap.values().contains(r)) {
                 regs.add(r);
+                calleeSize+=r.s.bytes;
+            }
         }
 
         Collections.reverse(regs);
         for (X86.Reg r : regs)
             X86.emit1("pop" + r.s, r);
-
 
         // - emit a "ret"
         X86.emit("\tret");
